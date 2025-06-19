@@ -15,6 +15,10 @@ Route::get('/ninjas', function () {
     return view('ninjas.index', ["greeting" => "Hello", "ninjas" => $ninjas]);
 });
 
+Route::get('/ninjas/create', function () {
+    return view('ninjas.create');
+});
+
 Route::get('/ninjas/{id}', function ($id) {
     // We can use this to fetch a record with id
     return view('ninjas.show', ["id" => $id]);
