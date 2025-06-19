@@ -8,8 +8,9 @@
     <ul>
         @foreach ($ninjas as $ninja)
             <li>
-                <p>{{ $ninja['name'] }}</p>
-                <a href="/ninja/{{ $ninja['id'] }}">View Details</a>
+                <x-card href="/ninjas/{{ $ninja['id'] }}" :highlight="$ninja['skill'] > 70">
+                    <h3>{{ $ninja['name'] }}</h3>
+                </x-card>
             </li>
         @endforeach
     </ul>
