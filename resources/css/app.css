@@ -1,9 +1,12 @@
 @import 'tailwindcss';
 
+/* Tip: install "PostCSS Language Support" in VS Code to remove warnings */
+
 body {
-  @apply bg-gray-100 text-gray-700;
-  font-family: "Rubik";
+  @apply bg-gray-100 text-gray-700 font-sans;
+  font-family: "Rubik", sans-serif;
 }
+
 h1 {
   @apply text-2xl font-bold text-red-500;
 }
@@ -14,43 +17,49 @@ h3 {
   @apply text-lg font-bold my-4;
 }
 ul {
-  @apply my-10;
+  @apply my-10 list-none;
 }
 p {
-  @apply my-2;
+  @apply my-2 leading-relaxed;
 }
 
-/* header */
+/* === Header === */
 header {
-  @apply bg-white;
+  @apply bg-white shadow;
 
   nav {
-    @apply flex items-center gap-5 max-w-screen-lg px-12 py-4 mx-auto;
+    @apply flex items-center gap-5 max-w-screen-lg px-6 py-4 mx-auto;
   }
+
   h1 {
-    @apply mr-auto;
+    @apply text-xl font-semibold mr-auto;
   }
 }
 
-/* form elements */
+/* === Form Elements === */
 form {
-  @apply max-w-screen-sm;
-}
-input, select, textarea {
-  @apply block w-full mt-2 mb-4 p-2;
+  @apply max-w-screen-sm mx-auto space-y-4;
 }
 
-/* custom classes */
+input,
+select,
+textarea {
+  @apply block w-full mt-2 p-2 bg-white border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400;
+}
+
+/* === Custom Utility Classes === */
 .container {
-  @apply max-w-screen-lg mx-auto px-12 py-8;
-}
-.card {
-  @apply bg-white rounded border border-gray-200 px-3 py-3 my-2 flex justify-between items-center;
-}
-.highlight {
-  @apply border-l-4 border-l-red-500;
-}
-.btn {
-  @apply rounded px-3 py-2 bg-gray-200 hover:bg-red-500 hover:text-white;
+  @apply max-w-screen-lg mx-auto px-6 py-8;
 }
 
+.card {
+  @apply bg-white rounded border border-gray-200 px-4 py-4 my-3 flex justify-between items-center shadow-sm;
+}
+
+.highlight {
+  @apply border-l-4 border-red-500 pl-4;
+}
+
+.btn {
+  @apply rounded px-4 py-2 bg-gray-200 hover:bg-red-500 hover:text-white transition-colors duration-200;
+}
