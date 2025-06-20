@@ -9,7 +9,11 @@
     
     <header>
         <nav>
-            <h1>Ninja Network</h1>
+            <h1>
+                <a href="{{ route('ninjas.index') }}">
+                    Ninja Network
+                </a>
+            </h1>
             <a href="{{ route('ninjas.index') }}">All Ninjas</a>
             <a href="{{ route('ninjas.create') }}">Create New Ninjas</a>
         </nav>
