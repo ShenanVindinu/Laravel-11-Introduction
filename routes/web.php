@@ -13,3 +13,4 @@ Route::get('/ninjas/create', [NinjaController::class, 'create'])->name('ninjas.c
 
 Route::get('/ninjas/{id}', [NinjaController::class, 'show'])->name('ninjas.show');
 Route::post('/ninjas', [NinjaController::class, 'store'])->name('ninjas.store');
+Route::delete('/ninjas/{id}', [NinjaController::class, 'destroy'])->name('ninjas.destroy');
