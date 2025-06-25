@@ -6,22 +6,25 @@ WORKDIR /var/www/html
 
 # Install system dependencies and PHP extensions needed by Laravel
 RUN apt-get update && apt-get install -y \
-    git zip unzip libpng-dev libonig-dev libxml2-dev \
+    git zip unzip curl libpng-dev libonig-dev libxml2-dev \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+
+# Install Composer (PHP package manager)
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm composer-setup.php
 
 # Copy project files to the container
 COPY . .
-
-# Install Composer (PHP package manager)
-/usr/bin/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"/
-RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-RUN rm composer-setup.php
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Set folder permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
+
+# Create .env file from .env.example
+RUN cp .env.example .env
 
 # Generate app key
 RUN php artisan key:generate
